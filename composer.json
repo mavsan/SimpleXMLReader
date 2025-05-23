@@ -14,7 +14,7 @@
     },
     "license": "PDDL-1.0",
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=8.2.0",
         "lib-libxml" : "*",
         "ext-xmlreader" : "*",
         "ext-dom" : "*"
