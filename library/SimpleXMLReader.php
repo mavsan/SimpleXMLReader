@@ -220,7 +220,7 @@ class SimpleXMLReader extends XMLReader
      */
     public function expandXpath(string $path, string $version = "1.0", string $encoding = "UTF-8", ?string $className = null): array
     {
-        return $this->expandSimpleXml($version, $encoding, $className)->xpath($path);
+        return $this->expandSimpleXml($version, $encoding, $className)?->xpath($path) ?? [];
     }
 
     /**
@@ -229,10 +229,10 @@ class SimpleXMLReader extends XMLReader
      * @param string $version
      * @param string $encoding
      * @param string|null $className
-     * @return SimpleXMLElement|bool|null a SimpleXMLElement or FALSE on failure
+     * @return SimpleXMLElement|null a SimpleXMLElement or FALSE on failure
      * @throws DOMException
      */
-    public function expandSimpleXml(string $version = "1.0", string $encoding = "UTF-8", ?string $className = null): SimpleXMLElement|bool|null
+    public function expandSimpleXml(string $version = "1.0", string $encoding = "UTF-8", ?string $className = null): ?SimpleXMLElement
     {
         $element = $this->expand();
         $document = new DomDocument($version, $encoding);
@@ -246,6 +246,7 @@ class SimpleXMLReader extends XMLReader
         }
         $node = $document->importNode($element, true);
         $document->appendChild($node);
+
         return simplexml_import_dom($node, $className);
     }
 
@@ -255,10 +256,10 @@ class SimpleXMLReader extends XMLReader
      * @param string $version
      * @param string $encoding
      * @param string|null $className
-     * @return bool|string
+     * @return null|string
      * @throws DOMException
      */
-    public function expandString(string $version = "1.0", string $encoding = "UTF-8", ?string $className = null): bool|string
+    public function expandString(string $version = "1.0", string $encoding = "UTF-8", ?string $className = null): ?string
     {
         return $this->expandSimpleXml($version, $encoding, $className)?->asXML();
     }
