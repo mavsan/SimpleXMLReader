@@ -4,11 +4,13 @@
 
 Добавить в `composer.json`
 
-```json
-{
-    "type": "vcs",
-    "url": "https://github.com/mavsan/SimpleXMLReader"
-}
+```
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/mavsan/SimpleXMLReader"
+    }
+]
 ```
 
 Далее выполнить `composer require dkrnl/SimpleXMLReader`.
