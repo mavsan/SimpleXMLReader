@@ -3,6 +3,7 @@
     "description": "Wrapper XMLReader class, for simple SAX-reading(and simple XPath-queries) of huge(testing over 1G file) xml.",
     "keywords": ["XML", "XMLReader", "Iterator", "SimpleXML"],
     "homepage": "https://github.com/dkrnl/SimpleXMLReader",
+    "type": "library",
     "authors": [
         {
             "name": "dkrnl",
