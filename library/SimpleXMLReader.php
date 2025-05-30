@@ -58,12 +58,12 @@ class SimpleXMLReader extends XMLReader
      * Add node callback
      *
      * @param string $xpath
-     * @param callback $callback
+     * @param callable|array $callback $callback
      * @param integer $nodeType
      * @return SimpleXMLReader
      * @throws Exception
      */
-    public function registerCallback(string $xpath, callable $callback, int $nodeType = XMLREADER::ELEMENT): static
+    public function registerCallback(string $xpath, callable|array $callback, int $nodeType = XMLREADER::ELEMENT): static
     {
         if (isset($this->callback[$nodeType][$xpath])) {
             throw new Exception("Already exists callback '$xpath':$nodeType.");
